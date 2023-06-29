@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -55,43 +56,69 @@ N? 5
             Console.WriteLine("양수의 숫자를 넣어주세요");
             int n = Int32.Parse(Console.ReadLine());
 
+            star Star = new star();
+            Star.firststar(n);
+            Console.WriteLine();
+
+            Star.secondstar(n);
+            Console.WriteLine();
+
+            Star.thirdstar(n);
+            Console.WriteLine();
+
+            Star.fourthstar(n);
+            Console.WriteLine();
+
+            Star.fifthstar(n);
+        }
+    }
+    class star
+    {
+        public void firststar(int n)
+        {
             //1단계
-            for (int i = 0; i<n; i++) //그려질 줄의 수
+            for (int i = 0; i < n; i++) //그려질 줄의 수
             {
-                for(int j = 0; j<=i; j++) //한 줄에 그려질 별의 수
+                for (int j = 0; j <= i; j++) //한 줄에 그려질 별의 수
                 {
                     Console.Write("*");
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine();
+        }
 
+        public void secondstar(int n)
+        {
             //2단계
-            for(int i = n; i>0; i--) //그려질 줄의 수
+            for (int i = n; i > 0; i--) //그려질 줄의 수
             {
-                for(int j = 0; j<i; j++) //한 줄에 그려질 별의 수
+                for (int j = 0; j < i; j++) //한 줄에 그려질 별의 수
                 {
                     Console.Write("*");
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine();
+        }
 
+        public void thirdstar(int n)
+        {
             //3단계
             for (int i = 0; i < n; i++) //그려질 줄의 수
             {
-                for (int j = n-1; j>i; j--) //맘에 안듬 //한 줄에 그려질 공백의 수
+                for (int j = n - 1; j > i; j--) //맘에 안듬 //한 줄에 그려질 공백의 수
                 {
                     Console.Write(" ");
                 }
-                for (int j = 0; j <=i; j++) //한 줄에 그려질 별의 수
+                for (int j = 0; j <= i; j++) //한 줄에 그려질 별의 수
                 {
                     Console.Write("*");
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine();
+        }
 
+        public void fourthstar(int n)
+        {
             //4단계
             for (int i = n; i > 0; i--) //그려질 줄의 수
             {
@@ -105,46 +132,44 @@ N? 5
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine();
+        }
 
-            //5단계
-            if (n % 2 == 1) //홀수만 마름모가 가능하다
+        public void fifthstar(int n)
+        {
+            for (int i = 1; i <= n; i++) //증가할때까지의 줄을 맡음
             {
-                for (int i = 1; i <= n; i++) //증가할때까지의 줄을 맡음
+                if (i % 2 == 1) //하지만 그 줄에서 홀수를 가진 줄만 표현
                 {
-                    if (i % 2 == 1) //하지만 그 줄에서 홀수를 가진 줄만 표현
+                    for (int j = n; j > i; j--)//한 줄에 그려질 공백의 수
                     {
-                        for (int j = n; j > i; j--)//한 줄에 그려질 공백의 수
+                        if (j % 2 == 1)//마름모를 위해 공백을 반으로 줄임
                         {
-                            if (j % 2 == 1)//마름모를 위해 공백을 반으로 줄임
-                            {
                             Console.Write(" ");
-                            }
                         }
-                        for (int j = 1; j <= i; j++) //한 줄에 그려질 별의 수
-                        {
-                            Console.Write("*");
-                        }
-                        Console.WriteLine();
-                    }                                       
-                }
-                for (int i = n-1; i > 0; i--) //맘에 안듬 //감소할때까지의 줄을 맡음
-                {
-                    if (i % 2 == 1) //하지만 그 줄에서 홀수를 가진 줄만 표현
-                    {
-                        for (int j = n; j > i; j--)//한 줄에 그려질 공백의 수
-                        {
-                            if (j % 2 == 1)//마름모를 위해 공백을 반으로 줄임
-                            {
-                            Console.Write(" ");
-                            }
-                        }
-                        for (int j = 1; j <= i; j++)//한 줄에 그려질 별의 수
-                        {
-                            Console.Write("*");
-                        }
-                        Console.WriteLine();
                     }
+                    for (int j = 1; j <= i; j++) //한 줄에 그려질 별의 수
+                    {
+                        Console.Write("*");
+                    }
+                    Console.WriteLine();
+                }
+            }
+            for (int i = n - 1; i > 0; i--) //맘에 안듬 //감소할때까지의 줄을 맡음
+            {
+                if (i % 2 == 1) //하지만 그 줄에서 홀수를 가진 줄만 표현
+                {
+                    for (int j = n; j > i; j--)//한 줄에 그려질 공백의 수
+                    {
+                        if (j % 2 == 1)//마름모를 위해 공백을 반으로 줄임
+                        {
+                            Console.Write(" ");
+                        }
+                    }
+                    for (int j = 1; j <= i; j++)//한 줄에 그려질 별의 수
+                    {
+                        Console.Write("*");
+                    }
+                    Console.WriteLine();
                 }
             }
         }
